@@ -412,8 +412,6 @@ gpm_kbd_backlight_button_pressed_cb (GpmButton *button,
    static guint saved_brightness;
    gboolean ret;
 
-   saved_brightness = backlight->priv->master_percentage;
-
    if (g_strcmp0 (type, GPM_BUTTON_KBD_BRIGHT_UP) == 0) {
        ret = gpm_kbd_backlight_brightness_up (backlight);
 
