@@ -332,8 +332,15 @@ gpm_kbd_backlight_evaluate_power_source_and_set (GpmKbdBacklight *backlight)
    gfloat scale;
    gboolean on_battery;
    gboolean battery_reduce;
+   gboolean do_kbd_backlight;
    guint value;
    gboolean ret;
+
+   do_kbd_backlight = g_settings_get_boolean (backlight->priv->settings, GPM_SETTINGS_KBD_BACKLIGHT_ENABLE);
+   if (do_kbd_backlight == FALSE) {
+      g_warning ("policy is no dimming");
+      return FALSE;
+   }
 
    brightness = backlight->priv->master_percentage;
 
